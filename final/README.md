@@ -4,33 +4,37 @@ Installation:
  First we need to make the MySQL server run.
 
  In your shell:
-    `mysql -u root -proot`
-    `use psh_raw`
-    `source database/database.mysql`
-    `source database/datas.sql`
+
+    * mysql -u root -proot
+    * use psh_raw
+    * source database/database.mysql
+    * source database/datas.sql
 
 Optionnal, but you'll be able to see all the requests that I have done:
-    `source database/request.sql`
+
+    * source database/request.sql`
 
 Then you can quit MySQL:
-     `quit`
+
+     * quit
 
 List of modules used:
-    * angular
-    * angular-route
-    * jquery
-    * bootstrap
-    * node
-    * express
-    * body-parser
-    * mysql
-    * cors
+
+* angular
+* angular-route
+* jquery
+* bootstrap
+* node
+* express
+* body-parser
+* mysql
+* cors
 
 Then you have to run the server:
-    `node app/server.js`
+    node app/server.js
 
 It should be fine but if there are any probleme, run:
-    `./install.sh`
+    ./install.sh
 
 Once the server run, open index.html in a server (Personnaly I used atom-live-server package)
 
