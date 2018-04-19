@@ -1,5 +1,8 @@
+<div class="container">
+
+    <div class="jumbotron">
 <h1>Select a user and a month:</h1>
-<div class="jumbotron">
+<br><br>
     <form class="form-row">
         <div class="col" >
           <label>User Id:
@@ -26,17 +29,28 @@
             <option value="12">December</option>
           </select></label>
         </div>
+        <div class="col">
+            <button type="submit" class="btn btn-default" ng-click="enter()" >Enter</button>
+            
+            <button type="submit" class="btn btn-default" ng-click="leave()" >Leave</button>
+        </div>
 
-        <button type="submit" class="btn btn-default" ng-click="enter()" >Enter</button>
-        <button type="submit" class="btn btn-default" ng-click="leave()" >Leave</button>
         <br>
     </form>
+    <br><br>
 
-    <button type="submit" class="btn btn-default" ng-click="resume()" >Resume</button>
+    <form class="form-row">
+        <div class="col">
+            <button type="submit" class="btn btn-default" ng-click="resume()" >Resume</button>
+        </div>
+        <div class="col">
+            <button type="submit" class="btn btn-default" ng-click="final()" ng-show="bool_resume">Analyze</button>
+        </div>
+    </form>
 
     <br>
     <br>
-    <table class="table table-striped">
+    <table class="table table-striped" ng-hide = 'bool_resume'>
         <thead>
             <tr>
                 <th>Row ID</th>
@@ -57,5 +71,41 @@
         </tbody>
     </table>
 
+    <table class="table table-striped" ng-show = 'bool_final'>
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>HOURS OF WORK</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="rec in raw_final | filter: userID">
+                <th>{{rec.fk_user}}</th>
+                <th>{{rec.HOURS_OF_WORK}}</th>
+            </tr>
+        </tbody>
+    </table>
 
+    <table class="table table-striped" ng-show = 'bool_resume'>
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>ENTER</th>
+                <th>QUIT</th>
+                <th>TIME SPENT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="rec in raw_recap ">
+                <th>{{rec.fk_user}}</th>
+                <th>{{rec.ENTER}}</th>
+                <th>{{rec.QUIT}}</th>
+                <th>{{rec.TIME_SPENT}}</th>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+</div>
 </div>

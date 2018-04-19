@@ -18,6 +18,8 @@ internshipApp.config(['$routeProvider', function($routeProvider){
 
 
 internshipApp.controller('databaseCtrl', ['$scope', '$http', function($scope, $http){
+    $scope.bool_resume = false;
+    $scope.bool_final = false;
 
     $scope.addRaw = function() {
         var direction;
@@ -67,6 +69,8 @@ internshipApp.controller('databaseCtrl', ['$scope', '$http', function($scope, $h
         }).then(function(httpResponse){
             console.log("Server answer:", httpResponse);
             $scope.psh_raw = httpResponse.data;
+            $scope.bool_resume = false;
+            $scope.bool_final = false;
         });
     };
 
@@ -85,6 +89,8 @@ internshipApp.controller('databaseCtrl', ['$scope', '$http', function($scope, $h
         }).then(function(httpResponse){
             console.log("Server answer:", httpResponse);
             $scope.psh_raw = httpResponse.data;
+            $scope.bool_resume = false;
+            $scope.bool_final = false;
         });
     };
 
@@ -102,7 +108,27 @@ internshipApp.controller('databaseCtrl', ['$scope', '$http', function($scope, $h
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).then(function(httpResponse){
             console.log("Server answer:", httpResponse);
+            $scope.raw_recap = httpResponse.data;
+            $scope.bool_resume = true;
+        });
+    };
 
+    $scope.final = function(){
+        $http({
+            url : 'http://localhost:8080/db_final',
+            method: 'POST',
+            transformRequest: function(obj) {
+                var str = [];
+                for(var p in obj)
+                    str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                    return str.join("&");
+                },
+            data: {monthNumber: $scope.month},
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).then(function(httpResponse){
+            console.log("Server answer:", httpResponse);
+            $scope.raw_final = httpResponse.data;
+            $scope.bool_final = true;
         });
     };
 
