@@ -1,4 +1,3 @@
-require('cloud').exemple;
 var express = require('express');
 var parse = require('body-parser')
 var cors = require('cors');
