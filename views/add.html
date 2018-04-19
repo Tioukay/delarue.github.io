@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="jumbotron">
+
+<h1>Add a row (unfinished)</h1>
+
+<form ng-submit="addRaw()">
+    <div class="form-group">
+        <input type="text" placeholder="ID" ng-model="newRaw.fk_user" class="form-control" />
+        <input type="text" placeholder="Time" ng-model="newRaw.time" class="form-control"/>
+    </div>
+    <div class="checkbox">
+        <label><input type="checkbox" ng-model="newRaw.enter"> Enter </label>
+    </div>
+    <div class="checkbox">
+        <label><input type="checkbox" ng-model="newRaw.leave"> Leave </label>
+    </div>
+    <div class="form-group" ng-show="newRaw.leave">
+      <label>Cause of leave
+      <select class="form-control" ng-init="newRaw.type = 0" ng-model="newRaw.type" >
+        <option value="1" >General</option>
+        <option value="2" >Vacation</option>
+        <option value="3" >Doctor</option>
+      </select></label>
+    </div>
+    <button type="submit" class="btn btn-default">Add a raw</button>
+</form>
+
+</div>
+</div>
